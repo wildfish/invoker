@@ -6,7 +6,7 @@ from invoker import invoker
 from tests.strategies import namespace_names, apps
 
 
-class Invoker(TestCase):
+class TestInvoker(TestCase):
     @given(apps())
     def test_no_env_is_given___tasks_are_added_to_the_root(self, app):
         ns = invoker(

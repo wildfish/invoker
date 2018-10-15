@@ -58,6 +58,25 @@ optional. These are described below.
 * **namespace** - Specifies a namespace to load the namespace tasks
   into. If this is not set the name of the module is used.
 
+The invoke config can remain the same. However it is possible to
+configure each environment separately in the ``'envs'`` section.
+If a key is present in the environment specific config that value
+will be used over the entry from the root config provided
+``EnvConfig`` if used in the task. To specify environment specific
+configurations your conig file may look something like this::
+
+    {
+        'key': 'value',
+        'envs': {
+            'stage': {
+                'key': 'stage val',
+            },
+            'prod': {
+                'key': 'prod val',
+            }
+        }
+    }
+
 Apps
 ----
 
@@ -86,3 +105,39 @@ collection called ``ns``::
         'param': 'default value'
     })
 
+
+EnvContext
+----------
+
+If your app should be used for specific environments the
+``EnvContext`` is supplied to help get the environment specific
+configurations::
+
+    from invoke import task, run, Collection
+    from invoker.context import EnvContext
+
+    @task()
+    def echo(ctx, message):
+        ctx = EnvContext(ctx)
+        run('echo {}'.format(message))
+
+This will fetch the environment specific settings if they are
+present otherwise it will load the configuration from the root
+context, for example, with the following config::
+
+    {
+        'key': 'value',
+        'envs': {
+            'stage': {
+                'key': 'stage val',
+            },
+            'prod': {
+                'other': 'other val',
+            }
+        }
+    }
+
+In the ``prod`` environment calling using ``ctx['key']`` will
+return ``'value'`` as there is no ``'key'`` entry in the ``'prod'``
+specific config. In the ``stage`` environment using ``ctx['key']``
+will return ``'stage val'``.
