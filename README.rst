@@ -4,7 +4,7 @@ invoker
 A wrapper around `invoke <http://www.pyinvoke.org/>`_ to help
 facilitate sharing tasks and specifying multiple environments
 to run tasks against for instance running tasks against staging
-and production environments.
+and production environments. It supports Python 2.7 and 3.4+.
 
 Configuration
 -------------

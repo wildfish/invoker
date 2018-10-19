@@ -2,8 +2,11 @@ import importlib
 
 import six
 from invoke import Collection, Task
-from collections import ChainMap
 
+try:
+    from collections import ChainMap
+except ImportError:
+    from chainmap import ChainMap
 
 _app_spec_defaults = {
     'namespace': None,
