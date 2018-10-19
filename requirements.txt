@@ -6,6 +6,7 @@
 #
 atomicwrites==1.2.1       # via pytest
 attrs==18.2.0             # via hypothesis, pytest
+chainmap==1.0.2
 coverage==4.5.1
 hypothesis==3.76.0
 invoke==1.2.0
