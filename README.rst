@@ -118,7 +118,7 @@ configurations::
 
     @task()
     def echo(ctx, message):
-        ctx = EnvContext(ctx)
+        ctx = EnvContext(ctx.config)
         run('echo {}'.format(message))
 
 This will fetch the environment specific settings if they are
