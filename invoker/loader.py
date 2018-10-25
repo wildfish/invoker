@@ -2,7 +2,7 @@ import importlib
 
 import six
 from invoke import Collection, Task
-from collections import ChainMap
+from chainmap import ChainMap
 
 
 _app_spec_defaults = {

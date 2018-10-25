@@ -6,11 +6,17 @@
 #
 atomicwrites==1.2.1       # via pytest
 attrs==18.2.0             # via hypothesis, pytest
+chainmap==1.0.2
 coverage==4.5.1
+filelock==3.0.9           # via tox
 hypothesis==3.76.0
 invoke==1.2.0
 more-itertools==4.3.0     # via pytest
-pluggy==0.7.1             # via pytest
-py==1.7.0                 # via pytest
+pluggy==0.7.1             # via pytest, tox
+py==1.7.0                 # via pytest, tox
+pytest-cov==2.6.0
 pytest==3.8.2
-six==1.11.0               # via more-itertools, pytest
+six==1.11.0
+toml==0.10.0              # via tox
+tox==3.5.2
+virtualenv==16.0.0        # via tox

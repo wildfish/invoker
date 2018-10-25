@@ -1,5 +1,6 @@
 from unittest import TestCase
 
+import six
 from hypothesis import given, assume
 
 from invoker import invoker
@@ -25,7 +26,7 @@ class TestInvoker(TestCase):
             envs=[first, second],
         )
 
-        self.assertEqual([first, second], list(ns.collections.keys()))
+        self.assertEqual(list(sorted([first, second])), list(sorted(ns.collections.keys())))
         self.assertIn('noop', ns.collections[first].collections[app[0]].tasks)
         self.assertIn('noop', ns.collections[second].collections[app[0]].tasks)
 
@@ -38,12 +39,12 @@ class TestInvoker(TestCase):
             envs=[first, second],
         )
 
-        self.assertEqual([first, second], list(ns.collections.keys()))
+        self.assertEqual(list(sorted([first, second])), list(sorted(ns.collections.keys())))
         self.assertIn('noop', ns.collections[first].collections[app_name[0]].tasks)
         self.assertNotIn(app_name[0], ns.collections[second].collections)
 
     def test_path_is_not_specified___value_error_is_raised(self):
-        with self.assertRaisesRegex(ValueError, 'Each app specified must be a string or a dictionary containing a path') as ex:
+        with six.assertRaisesRegex(self, ValueError, 'Each app specified must be a string or a dictionary containing a path') as ex:
             invoker(
                 apps=[{'envs': ['first']}],
                 envs=['first', 'second'],
@@ -58,7 +59,7 @@ class TestInvoker(TestCase):
             envs=[first, second],
         )
 
-        self.assertEqual([first, second], list(ns.collections.keys()))
+        self.assertEqual(list(sorted([first, second])), list(sorted(ns.collections.keys())))
         self.assertIn('noop', ns.collections[first].collections[custom].tasks)
         self.assertNotIn(custom, ns.collections[second].collections)
 
