@@ -5,6 +5,6 @@ python:
   - "3.6"
   - "3.7"
 install: pip install tox-travis codecov
-script: tox
+script: ./ci_runtests.sh
 after_success:
   - codecov
