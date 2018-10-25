@@ -44,20 +44,6 @@ readme = get_readme()
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 
-class Publish(Command):
-    command_name = 'publish'
-
-    def run(self):
-        if os.system('pip freeze | grep twine'):
-            self.announce('twine not installed.\nUse `pip install twine`.\nExiting.', WARN)
-            sys.exit(1)
-
-        os.system('python setup.py sdist')
-        os.system('python setup.py bdist_wheel')
-
-        os.system('twine upload dist/*')
-
-
 setup(
     name='invoker',
     version=version,
@@ -92,7 +78,4 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    cmdclass={
-        'publish': Publish,
-    },
 )
