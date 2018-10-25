@@ -1,3 +1,7 @@
-invoke
-chainmap
-six
+-r ./requirements-package.in
+pytest
+pytest-cov
+coverage
+hypothesis
+tox
+twine

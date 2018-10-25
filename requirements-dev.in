@@ -1,6 +1,0 @@
--r ./requirements.in
-pytest
-pytest-cov
-coverage
-hypothesis
-tox
