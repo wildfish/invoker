@@ -7,9 +7,13 @@ def invoker(apps=None, envs=None, context_processors=None):
     root_collection = Collection()
 
     # setup the collection for each environment
-    env_collections = {env: Collection(env) for env in envs or []}
-    for col in env_collections.values():
-        root_collection.add_collection(col)
+    env_collections = {}
+    for env in envs or []:
+        env_collections[env] = Collection(env)
+        env_collections[env].configure({'env': env})
+
+        for col in env_collections.values():
+            root_collection.add_collection(col)
 
     # add each app to the root collection or each relevant env collection
     for app in get_apps(apps):

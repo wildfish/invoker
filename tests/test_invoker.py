@@ -70,4 +70,4 @@ class TestInvoker(TestCase):
             envs=[env_name],
         )
 
-        self.assertEqual(env_name, ns.collections[env_name].collections[app_name[0]].configuration()['env'])
+        self.assertEqual(env_name, ns.collections[env_name].configuration()['env'])
