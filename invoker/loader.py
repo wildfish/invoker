@@ -45,9 +45,6 @@ class App:
             for t in self.get_tasks():
                 collection.add_task(t)
 
-        if env:
-            collection.configure({'env': env})
-
         return collection
 
 

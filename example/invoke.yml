@@ -1,0 +1,7 @@
+foo: abc
+bar: 123
+envs:
+  prod:
+    foo: prod's foo value
+  stage:
+    bar: stage's bar value
