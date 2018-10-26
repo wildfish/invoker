@@ -1,6 +1,12 @@
 invoker
 =======
 
+.. image:: https://travis-ci.org/wildfish/invoker.svg?branch=master
+    :target: https://travis-ci.org/wildfish/invoker
+
+.. image:: https://codecov.io/gh/wildfish/invoker/branch/master/graph/badge.svg
+  :target: https://codecov.io/gh/wildfish/invoker
+
 A wrapper around `invoke <http://www.pyinvoke.org/>`_ to help
 facilitate sharing tasks and specifying multiple environments
 to run tasks against for instance running tasks against staging
