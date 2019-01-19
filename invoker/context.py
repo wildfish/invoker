@@ -1,4 +1,6 @@
-from invoke import Context
+from inspect import signature, getargspec
+
+from invoke import Context, Task
 
 
 class EnvContext(Context):
@@ -13,3 +15,9 @@ class EnvContext(Context):
             return super_self.__getitem__('envs')[env][item]
         else:
             return super_self.__getitem__(item)
+
+    def get(self, key, default=None):
+        try:
+            return self[key]
+        except KeyError:
+            return default
