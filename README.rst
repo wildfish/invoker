@@ -118,21 +118,9 @@ collection called ``ns``::
 EnvContext
 ----------
 
-If your app should be used for specific environments the
-``EnvContext`` is supplied to help get the environment specific
-configurations::
-
-    from invoke import task, run, Collection
-    from invoker.context import EnvContext
-
-    @task()
-    def echo(ctx, message):
-        ctx = EnvContext(ctx)
-        run('echo {}'.format(message))
-
-This will fetch the environment specific settings if they are
-present otherwise it will load the configuration from the root
-context, for example, with the following config::
+The context supplied to each of your tasks will behave similarly
+to the normal invoke context however it has be changed to handle
+environments better, for example, with the following config::
 
     {
         'key': 'value',
