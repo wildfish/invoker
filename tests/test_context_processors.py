@@ -5,7 +5,7 @@ from invoker import invoker
 from invoker.context import EnvContext
 
 
-def test_processor(ctx):
+def processor(ctx):
     ctx['foo'] = 'bar'
     return ctx
 
@@ -38,7 +38,7 @@ class ContextProcessors(TestCase):
             apps=[
                 'tests.examples.bare_tasks',
             ],
-            context_processors=['tests.test_context_processors.test_processor']
+            context_processors=['tests.test_context_processors.processor']
         )
 
         res = ns.collections['bare-tasks'].tasks['noop'](Context({}))
@@ -51,7 +51,7 @@ class ContextProcessors(TestCase):
             apps=[
                 'tests.examples.ns_tasks',
             ],
-            context_processors=['tests.test_context_processors.test_processor']
+            context_processors=['tests.test_context_processors.processor']
         )
 
         res = ns.collections['ns-tasks'].tasks['noop'](Context({}))
