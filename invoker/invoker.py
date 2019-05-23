@@ -16,7 +16,7 @@ def invoker(apps=None, envs=None, context_processors=None):
             root_collection.add_collection(col)
 
     # add each app to the root collection or each relevant env collection
-    for app in get_apps(apps):
+    for app in get_apps(apps, context_processors):
         if (app.envs is None and envs) or app.envs:
             for env in app.envs or envs or []:
                 env_collections[env].add_collection(app.get_collection(env=env))

@@ -10,8 +10,6 @@ def get(ctx, param):
     """
     Prints the value of the supplied context variable.
     """
-    ctx = EnvContext(ctx)
-
     if ctx.get('env'):
         print('The environment is set to:', ctx['env'])
     else:
