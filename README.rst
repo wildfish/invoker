@@ -63,6 +63,9 @@ optional. These are described below.
   be present in the main ``envs`` setting.
 * **namespace** - Specifies a namespace to load the namespace tasks
   into. If this is not set the name of the module is used.
+* **context_processors** - Specifies paths to a list of functions to
+  apply to the context before running the task (see
+  `Context Processors <#context-processors>`_).
 
 The invoke config can remain the same. However it is possible to
 configure each environment separately in the ``'envs'`` section.
@@ -147,3 +150,32 @@ In the ``prod`` environment calling using ``ctx['key']`` will
 return ``'value'`` as there is no ``'key'`` entry in the ``'prod'``
 specific config. In the ``stage`` environment using ``ctx['key']``
 will return ``'stage val'``.
+
+Context Processors
+------------------
+
+A context processor if a function that takes a single argument (the
+current context) and returns a modified context. For example::
+
+    def add_foo(ctx):
+        ctx['foo'] = 'bar'
+        return ctx
+
+Will add ``foo`` with a value ``'bar'`` to the context.
+
+Context processors can be configured in 2 ways, by setting
+``'context_processors'`` on an app spec to a list of paths of functions
+to call or by passing the list to the ``invoker`` call::
+
+    invoker(
+        ...
+        context_processors=['foo.bar.func']
+    )
+
+Any context processors added as an argument to ``invoker`` will be added
+to all apps where as those passed as part of the app spec will only be
+added to the relevant app.
+
+**NOTE:** ``invoker.context_processors.make_env_context`` is always added
+to the context processors to ensure the environment specific context is
+always available.

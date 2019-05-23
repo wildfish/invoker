@@ -1,19 +1,10 @@
 from __future__ import print_function, division
 
-import glob
-import os
 import io
+import os
 import re
-import shutil
-import sys
-import tarfile
-from contextlib import contextmanager
-from distutils.log import INFO, WARN, ERROR
-from distutils.spawn import find_executable
-from tempfile import mkdtemp
-from time import sleep
 
-from setuptools import find_packages, setup, Command
+from setuptools import find_packages, setup
 
 SCRIPT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -72,7 +63,6 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',

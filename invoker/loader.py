@@ -16,7 +16,7 @@ _app_spec_defaults = {
 
 class App:
     default_context_processors = [
-        'invoker.context_processors.add_env_context'
+        'invoker.context_processors.make_env_context'
     ]
 
     def __init__(self, path=None, namespace=None, envs=None, context_processors=None):
@@ -83,17 +83,18 @@ class App:
         return collection
 
 
-def get_app_spec(app):
+def get_app_spec(app, context_processors=None):
     if isinstance(app, six.string_types):
-        return ChainMap({'path': app}, _app_spec_defaults)
+        return ChainMap({'path': app, 'context_processors': context_processors}, _app_spec_defaults)
     else:
         if 'path' not in app:
             raise ValueError(
                 'Each app specified must be a string or a dictionary containing a path'
             )
 
+        app.setdefault('context_processors', []).extend(context_processors or [])
         return ChainMap(app, _app_spec_defaults)
 
 
 def get_apps(apps, context_processors):
-    return [App(**get_app_spec(app_spec), context_processors=context_processors) for app_spec in apps]
+    return [App(**get_app_spec(app_spec, context_processors=context_processors)) for app_spec in apps]
