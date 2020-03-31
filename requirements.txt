@@ -6,32 +6,32 @@
 #
 atomicwrites==1.2.1       # via pytest
 attrs==18.2.0             # via hypothesis, pytest
-bleach==3.0.2             # via readme-renderer
+bleach==3.1.4             # via readme-renderer
 certifi==2018.10.15       # via requests
-chainmap==1.0.2
+chainmap==1.0.2           # via -r ./requirements-package.in
 chardet==3.0.4            # via requests
-coverage==4.5.1
+coverage==4.5.1           # via -r requirements.in, pytest-cov
 docutils==0.14            # via readme-renderer
 filelock==3.0.9           # via tox
 future==0.16.0            # via readme-renderer
-hypothesis==3.76.0
+hypothesis==3.76.0        # via -r requirements.in
 idna==2.7                 # via requests
-invoke==1.2.0
+invoke==1.2.0             # via -r ./requirements-package.in
 more-itertools==4.3.0     # via pytest
 pkginfo==1.4.2            # via twine
 pluggy==0.7.1             # via pytest, tox
 py==1.7.0                 # via pytest, tox
 pygments==2.2.0           # via readme-renderer
-pytest-cov==2.6.0
-pytest==3.8.2
+pytest-cov==2.6.0         # via -r requirements.in
+pytest==3.8.2             # via -r requirements.in, pytest-cov
 readme-renderer==23.0     # via twine
 requests-toolbelt==0.8.0  # via twine
 requests==2.20.0          # via requests-toolbelt, twine
-six==1.11.0
+six==1.11.0               # via -r ./requirements-package.in, bleach, more-itertools, pytest, readme-renderer, tox
 toml==0.10.0              # via tox
-tox==3.5.2
+tox==3.5.2                # via -r requirements.in
 tqdm==4.28.1              # via twine
-twine==1.12.1
+twine==1.12.1             # via -r requirements.in
 urllib3==1.24.3           # via requests
 virtualenv==16.0.0        # via tox
 webencodings==0.5.1       # via bleach
